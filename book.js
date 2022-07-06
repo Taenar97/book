@@ -51,10 +51,11 @@ c.addEventListener('click', e => {
     x = e.offsetX;
     y = e.offsetY;
     for (node of graph) {
-        for( let i = 0; i < 5; i++) {//Necessary loop for clean display of nodes...
-            drawNode(node.x, node.y, node.name, "white", "white");
-        }
+        
         if ((x >= node.x - r && x <= node.x + r) && (y >= node.y - r && y <= node.y + r) ) {//Nodes is selected
+            for( let i = 0; i < 5; i++) {//Necessary loop for clean display of nodes...
+                drawNode(node.x, node.y, node.name, "white", "white");
+            }
             if ( node.type == "link") {
                 loadGraph(localStorage.getItem("graph") + node.path);
                 back.style.visibility = "visible";
@@ -190,9 +191,12 @@ function drawNode(x, y, text, color = "white", stroke = "black") {
 async function loadGraph(path) {
     await loadFile(path + "graph.txt")//Meta file contains node data like positions(x,y),name, neighbours, type & path (relative e.g. "content.md")
         .then(function(data) {
-            graph = convertGraphData(data);
-            localStorage.setItem("graph", path);//Saves the path of the folder for the current graph
-            drawGraph(graph);
+            if (data != "") {
+                graph = convertGraphData(data);
+                localStorage.setItem("graph", path);//Saves the path of the folder for the current graph
+                drawGraph(graph);
+            }
+            
         }, function (error) {
             console.log("An error occured while loading the graph: " + error);            
         });           
@@ -278,6 +282,16 @@ async function loadContent(path) {
             document.getElementById('content').innerHTML = html;
             if( path != "markdown/Welcome.md") {
                 localStorage.setItem(path, false);
+                //Set node one above also as false
+                pathOfFolder = path.split("/");
+                folder = "";
+                for (let i = 0; i < pathOfFolder.length - 1; i++) {
+                    folder += pathOfFolder[i] + "/";
+                }
+                console.log(folder);
+                localStorage.setItem(folder, false);
+
+
                 document.getElementById('content').innerHTML += '<button id="finished">Finished!</button>';
                 finished = document.getElementById("finished");
                 finished.addEventListener('click', e => {

@@ -1,0 +1,5 @@
+t1, 0, No, Go, leave, NordicQuantum.md, What is NordicQuantum?
+t1, 1, Go, T, leave, Goals.md, Our Goals
+t1, 2, T, Cu, leave, Team.md, The Team behind NordicQuantum
+t1, 3, Cu, P, leave, Current.md, Current topics
+t1, 4, P, , leave, Participation.md, How to participate
