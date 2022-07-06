@@ -1,0 +1,18 @@
+t1, 0, I, PS; Mi, link, Intro/, Introduction to Quantum Computing
+f1, 1, PS, Hi, link, Phil/, Philosophy
+f2, 1, Mi, Hi, link, Mind/, Mindset
+t1, 2, Hi, SA, link, Hist/, History
+t0, 3, N, SA, link, News/, News
+t1, 3, SA, Ph, link, SotA/, State of the Art
+t1, 4, Ph, Ha; LA; Py; Git, link, Phy/, Quantum Physics
+f0, 5, Ha, Pa; Alg, link, Hard/, Hardware
+f1, 5, LA, Ga, link, Lin/, Linear Algebra
+f2, 5, Py, Ga; Da; Git, link, Py/, Python
+f3, 5, Git, , link, Git/, Git
+t1, 6, Ga, Alg, link, Gate/, Quantum Gates
+t1, 7, Alg, Q, link, Alg/, Quantum Algorithms
+t2, 7, Da, Q, link, Data/, Data Science
+f0, 8, Pa, No, link, Papers/, Papers
+f2, 8, Q, No, link, QML/, Quantum Machine Learning
+f3, 8, S, No, link, Server/, Server Administration
+f2, 9, No, , link, Nordic/, NordicQuantum Research Group @ UAS Kiel

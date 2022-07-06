@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>		
+		<title>Quantum Book</title>		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">        
+        <meta name="keywords" content="NordicQuantum Quantum Book">       
+        <meta name="author" content="Sven Nivera">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>        
+        <base href="" target="_self">
+	</head>
+	<body> 
+        <div id="container">
+            <canvas id="graph" width="240"></canvas>
+            <button id="toggle"><i class="arrow left" id="arrow"></i></button>
+            <button id="back">&lt; Back to Overview</button>
+            <button id="logo"><img src="img/logo.png" width="40"></button>
+            <div id="tooltip">Tooltip</div>                      
+        </div>                               
+        <div id="content">        
+        </div>
+        <script src="book.js"></script>
+        <script src="sidebar.js"></script>      
+                
+    </body>
+</html>

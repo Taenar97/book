@@ -1,0 +1,134 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+    transition-duration: 0.4s;
+}    
+html {
+    height: 100%;
+}
+body {  
+    position: relative;  
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #d3d3d3;
+    display: flex;
+    
+}
+th, td {
+    padding: 15px;
+  }
+tr:nth-child(even) {
+    background-color: #D6EEEE;
+  }
+#graph, #container {
+    background-color: white;
+    border-radius: 0px 10px 10px 0px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);    
+    border-right: 1px solid #d3d3d3;
+    width: 240px;
+    height: 100%;    
+    visibility: visible; 
+}
+#container.active {
+    width: 60px;
+}
+#graph.active {
+    visibility: hidden;
+    width: 60px;        
+}
+#toggle {
+    position: absolute;
+    left: 180px;
+    bottom: 0px;
+    width: 59px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: white;     
+}
+#toggle:hover {
+    background-color: #d3d3d3;
+}
+#toggle.active {
+    left: 0px;
+}
+#back {
+    position: absolute;
+    border-radius: 10px;
+    left: 100px;
+    top: 5px;
+    width: 135px;
+    height: 24px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid black;
+    visibility: hidden;
+    transition-duration: 0ms;
+}
+#back:hover {
+    background-color: #d3d3d3;
+}
+#logo {
+    position: absolute;
+    border: none;
+    background-color: white;
+    left: 10px;
+    top: 5px;
+    cursor: pointer;
+}
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}  
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}  
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+#tooltip {
+    position: absolute;
+    top: 0px;
+    left: 240px;
+    padding: 5px;
+    font-size: 18px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition-duration: 0ms;
+    visibility: hidden;
+    
+}
+#content {    
+    width: 100%;
+    margin: 16px;
+    padding: 24px;
+    
+    overflow: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2); 
+}
+#finished {
+    margin: 10px 0px 10px 0px;
+    border-radius: 10px;
+    width: 135px;
+    height: 24px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid black;
+    transition-duration: 0ms;   
+}
+#finished:hover {
+    background-color: #d3d3d3;    
+}
