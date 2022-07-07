@@ -67,9 +67,6 @@ c.addEventListener('click', e => {
     }
 });
 
-
-
-
 //Back button functionality
 back.addEventListener('click', e => {
     if( localStorage.getItem("graph") != "markdown/") {
@@ -180,9 +177,6 @@ function drawNode(x, y, text, color = "white", stroke = "black") {
     ctx.closePath();
 }
 
-
-
-
 /**
  * Loads a graph array from a given folder.
  * @param {string} path Path of the folder containing the graph.
@@ -269,6 +263,7 @@ function convertGraphData(data) {
     }
     return graph_array; 
 }
+
 /**
  * Loads the content (.md) found at a given path into the content div of the site.
  * @param {string} path The path of the content file (.md) to load
@@ -281,21 +276,19 @@ async function loadContent(path) {
             html = converter.makeHtml(data);
             document.getElementById('content').innerHTML = html;
             if( path != "markdown/Welcome.md") {
-                localStorage.setItem(path, false);
-                //Set node one above also as false
-                pathOfFolder = path.split("/");
-                folder = "";
-                for (let i = 0; i < pathOfFolder.length - 1; i++) {
-                    folder += pathOfFolder[i] + "/";
+                if (localStorage.getItem(path) == null) { //Mark unfinished, though viewed nodes yellow
+                    localStorage.setItem(path, false);
+                }                
+                if (!areAllNodesFinished()) { //Mark link node above as viewed                     
+                    localStorage.setItem(getFolder(path), false);
                 }
-                console.log(folder);
-                localStorage.setItem(folder, false);
-
-
                 document.getElementById('content').innerHTML += '<button id="finished">Finished!</button>';
                 finished = document.getElementById("finished");
                 finished.addEventListener('click', e => {
-                    localStorage.setItem(localStorage.getItem("active_node"), true);
+                    localStorage.setItem(localStorage.getItem("active_node"), true);                                                           
+                    if (areAllNodesFinished()) {//sets link node above green if all nodes are finished
+                        localStorage.setItem(getFolder(path), true);
+                    }                    
                 });
             }            
             localStorage.setItem("active_node", path);
@@ -303,6 +296,7 @@ async function loadContent(path) {
             console.log("An error occured while loading the content file: " + error)
         });
 }
+
 /**
  * Function which loads a document via AJAX. Using Promises to return the value once received (Async).
  * @param {string} path The path of the file to be loaded.
@@ -320,7 +314,33 @@ function loadFile(path) {
     })
 }
 
+/**
+ * Determines wheter all nodes of the current tree are finished or not.
+ * @returns true if all nodes are finished, false if not.
+ */
+ function areAllNodesFinished() {
+    allDone = true;
+    for (node of graph) {
+        if (localStorage.getItem(localStorage.getItem("graph") + node.path) != "true") {
+            allDone = false;
+        }
+    }
+    return allDone;
+}
 
+/**
+ * Determines the upper folder of a given path.
+ * @param {string} path The path of which to isolate the higher level from.
+ * @returns The path one level higher.
+ */
+function getFolder(path) {
+    pathOfFolder = path.split("/");
+    folder = "";
+    for (let i = 0; i < pathOfFolder.length - 1; i++) {
+        folder += pathOfFolder[i] + "/";
+    }
+    return folder;
+}
 
 
 
