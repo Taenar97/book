@@ -4,7 +4,7 @@ f2, 1, Mi, Hi, link, Mind/, Mindset
 t1, 2, Hi, SA, link, Hist/, History
 t0, 3, N, SA, link, News/, News
 t1, 3, SA, Ph, link, SotA/, State of the Art
-t1, 4, Ph, Ha; LA; Py; Git, link, Phy/, Quantum Physics
+t1, 4, Ph, Ha; LA; Py, link, Phy/, Quantum Physics
 f0, 5, Ha, Pa; Alg, link, Hard/, Hardware
 f1, 5, LA, Ga, link, Lin/, Linear Algebra
 f2, 5, Py, Ga; Da; Git, link, Py/, Python
